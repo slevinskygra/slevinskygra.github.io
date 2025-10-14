@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sergi Granados — CV</title>
+  <meta name="description" content="Academic website and CV for Sergi Granados: soft-matter physics, electrolytes, active matter, iontronics." />
+  <meta property="og:title" content="Sergi Granados — CV" />
+  <meta property="og:description" content="Soft‑matter & active‑matter physics | Electrolytes | Nanochannels | Iontronics" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/preview.png" />
+  <link rel="icon" href="/assets/favicon.ico" />
+  <style>
+    :root{
+      --bg: #ffffff; --fg: #0f172a; --muted:#475569; --link:#2563eb; --card:#f8fafc; --border:#e2e8f0; --accent:#0ea5e9;
+    }
+    [data-theme="dark"]{
+      --bg:#0b1220; --fg:#e6edf3; --muted:#9fb0c3; --link:#60a5fa; --card:#0f172a; --border:#1f2a3a; --accent:#22d3ee;
+    }
+    html, body{margin:0; padding:0; background:var(--bg); color:var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";}
+    .container{max-width: 980px; margin:0 auto; padding: 24px 20px 80px;}
+    header{display:flex; gap:20px; align-items:center; justify-content:space-between; padding: 16px 0 8px; position: sticky; top:0; background:var(--bg); z-index:10; border-bottom:1px solid var(--border);} 
+    .brand{display:flex; align-items:center; gap:14px}
+    .avatar{width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,var(--accent),transparent); display:grid; place-items:center; color:#fff; font-weight:700}
+    .title{line-height:1.1; margin:0}
+    .subtitle{margin:4px 0 0; color:var(--muted); font-size:14px}
+    nav{display:flex; gap:14px; flex-wrap:wrap}
+    nav a{color:var(--muted); text-decoration:none; font-weight:600; padding:8px 10px; border-radius:8px}
+    nav a:hover{background:var(--card); color:var(--fg)}
+    .ghost{display:inline-flex; align-items:center; gap:6px; padding:8px 10px; border:1px solid var(--border); border-radius:10px; background:transparent; color:var(--fg); cursor:pointer}
+    .grid{display:grid; gap:18px}
+    @media (min-width: 860px){ .grid-2{grid-template-columns: 1.1fr 0.9fr;} }
+    section{padding:28px 0; border-bottom:1px dashed var(--border)}
+    h2{font-size: 22px; margin:0 0 12px}
+    p{line-height:1.6; margin:10px 0}
+    ul{margin:8px 0 0 20px}
+    li{margin:6px 0}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px}
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; background:var(--bg); border:1px solid var(--border); padding:2px 6px; border-radius:6px}
+    a{color:var(--link)}
+    .tag{display:inline-block; padding:4px 8px; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted); margin:4px 6px 0 0}
+    .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .pub{margin:10px 0; padding:12px; border:1px solid var(--border); border-radius:10px}
+    .pub small{color:var(--muted)}
+    .year{font-weight:700; color:var(--muted); margin-right:8px}
+    .footer{color:var(--muted); font-size:13px; text-align:center; padding:18px 0}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:10px; border:1px solid var(--border); text-decoration:none; color:var(--fg);}
+    .btn:hover{background:var(--card)}
+    .download{border-color: var(--accent)}
+    details{border:1px dashed var(--border); border-radius:10px; padding:10px 12px; background:transparent}
+    details summary{cursor:pointer; font-weight:600}
+    .pillnav{display:flex; gap:8px; flex-wrap:wrap}
+    .pillnav a{background:var(--card); border:1px solid var(--border); color:var(--fg);}
+    .nowrap{white-space:nowrap}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="avatar" aria-hidden="true">SG</div>
+        <div>
+          <h1 class="title">Sergi Granados</h1>
+          <p class="subtitle">Soft‑matter & Active‑matter Physics • Electrolytes • Iontronics</p>
+        </div>
+      </div>
+      <div class="row">
+        <nav class="pillnav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#teaching">Teaching</a>
+          <a href="#talks">Talks</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="ghost" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">🌗 Theme</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="about" class="grid grid-2">
+        <div>
+          <p>
+            I am a postdoctoral researcher at Northwestern University’s <span class="nowrap">CCTSM</span> working with Prof. Monica Olvera de la Cruz. My work bridges
+            theoretical and computational soft‑matter physics, with a focus on electrolytes in nanochannels, active colloids, and iontronic materials.
+          </p>
+          <div class="row" style="margin-top:10px">
+            <span class="tag">Electro‑hydrodynamics</span>
+            <span class="tag">PNP / LB / DPD</span>
+            <span class="tag">Active matter</span>
+            <span class="tag">Nanofluidics</span>
+            <span class="tag">Open science</span>
+          </div>
+          <p style="margin-top:12px">
+            <a class="btn download" href="assets/Sergi_Granados_CV.pdf" download>⬇ Download full CV (PDF)</a>
+            <a class="btn" href="mailto:sergi@example.edu">✉ Email</a>
+            <a class="btn" href="https://scholar.google.com" target="_blank" rel="noopener">🎓 Google Scholar</a>
+            <a class="btn" href="https://github.com/USERNAME" target="_blank" rel="noopener">🐙 GitHub</a>
+            <a class="btn" href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener">🆔 ORCID</a>
+          </p>
+        </div>
+        <div>
+          <div class="card">
+            <h2>News</h2>
+            <ul>
+              <li><span class="year">2025</span> Submitted: <em>Active Ionic Fluxes Induce Symmetry Breaking in Charge‑Patterned Nanochannels</em>.</li>
+              <li><span class="year">2025</span> New preprint on synchronematic crystals of Quincke oscillators (with M. Olvera de la Cruz et al.).</li>
+              <li><span class="year">2024</span> Started postdoc at Northwestern (CCTSM).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="research">
+        <h2>Research interests</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3 style="margin-top:0">Electro‑Hydrodynamics in Nanochannels</h3>
+            <p>Charge‑patterned walls, autonomous ionic sources/sinks, Onsager’s variational principle, symmetry breaking in PNPS.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">Active Colloids & Synchronization</h3>
+            <p>Swarmalators, synchronematic order, Kuramoto‑type couplings, metachronal waves, hydrodynamic interactions.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">Multiscale Simulations</h3>
+            <p>Coupling LB/DPD with PNPS; HPC with MPI/OMP; reproducible pipelines and open‑source tools.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">Applications</h3>
+            <p>Iontronic circuits, neuromorphic transport, desalination via VGF membranes, micro‑robotic assemblies.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="appointments">
+        <h2>Appointments</h2>
+        <ul>
+          <li><strong>Postdoctoral Researcher</strong>, Northwestern University, CCTSM (2024—present)</li>
+          <li><strong>Ph.D. in Physics</strong>, University of Barcelona (—2023)</li>
+          <li><strong>Visiting Researcher</strong>, University of Edinburgh</li>
+        </ul>
+      </section>
+
+      <section id="publications">
+        <h2>Selected publications</h2>
+        <article class="pub">
+          <div><strong>Active Ionic Fluxes Induce Symmetry Breaking in Charge‑Patterned Nanochannels</strong></div>
+          <small>S. G. Leyva, A. Shrestha, M. Olvera de la Cruz, <em>submitted (2025)</em></small>
+          <div class="row" style="margin-top:8px">
+            <a href="#" class="btn">PDF</a>
+            <a href="#" class="btn">arXiv</a>
+            <a href="#" class="btn">Code</a>
+            <details style="margin-left:auto">
+              <summary>BibTeX</summary>
+              <pre class="kbd">@article{leyva2025active,
+  title={Active Ionic Fluxes Induce Symmetry Breaking in Charge-Patterned Nanochannels},
+  author={Leyva, Sergi G. and Shrestha, Ahis and Olvera de la Cruz, Monica},
+  year={2025},
+  eprint={0000.00000}
+}</pre>
+            </details>
+          </div>
+        </article>
+        <article class="pub">
+          <div><strong>Synchronematic Crystals of Quincke Oscillators</strong></div>
+          <small>S. G. Leyva et al., <em>in prep (2025)</em></small>
+          <div class="row" style="margin-top:8px">
+            <a href="#" class="btn">PDF</a>
+            <a href="#" class="btn">Video</a>
+          </div>
+        </article>
+        <p style="margin-top:12px"><a class="btn" href="/publications.html">Full publications list →</a></p>
+      </section>
+
+      <section id="teaching">
+        <h2>Teaching & mentorship</h2>
+        <ul>
+          <li>Guest lectures: Active Matter and Synchronization (graduate, 2024—2025).</li>
+          <li>Mentored undergraduates on LB/DPD projects; open‑source reproducible workflows.</li>
+        </ul>
+      </section>
+
+      <section id="talks">
+        <h2>Talks</h2>
+        <ul>
+          <li>APS March Meeting — <em>Hydrodynamically coupled oscillators in nanochannels</em> (2025).</li>
+          <li>Soft‑Matter Seminar, ENS — <em>Autonomous iontronic transport</em> (2024).</li>
+        </ul>
+      </section>
+
+      <section id="service">
+        <h2>Awards & service</h2>
+        <ul>
+          <li>NSF MRSEC IRG‑2 collaborator.</li>
+          <li>Reviewer for PRL, Nat. Phys. (suggested).</li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <p><strong>Email:</strong> sergi@example.edu</p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/USERNAME" target="_blank" rel="noopener">github.com/USERNAME</a></p>
+            <p><strong>Google Scholar:</strong> <a href="https://scholar.google.com" target="_blank" rel="noopener">Scholar profile</a></p>
+          </div>
+          <div class="card">
+            <p>Department / Lab address</p>
+            <p>Northwestern University — CCTSM</p>
+            <p>Evanston, IL, USA</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>© <span id="year"></span> Sergi Granados • Built with HTML/CSS • <a href="https://github.com/USERNAME/USERNAME.github.io" target="_blank" rel="noopener">Source</a></p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // theme toggle (persist to localStorage)
+    const themeBtn = document.getElementById('themeBtn');
+    const root = document.documentElement;
+    const stored = localStorage.getItem('theme');
+    if (stored) root.setAttribute('data-theme', stored);
+    themeBtn.addEventListener('click', ()=>{
+      const cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('theme', cur);
+    });
+    // smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+  </script>
+</body>
+</html>
