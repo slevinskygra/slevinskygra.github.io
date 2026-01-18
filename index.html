@@ -656,7 +656,7 @@
         <div class="container">
             <div class="hero-with-photo">
                 <div class="profile-photo">
-                    <img src="assets/profile.png" alt="Sergi G. Leyva">
+                    <img src="your-photo.jpg" alt="Sergi G. Leyva">
                 </div>
                 <div class="hero-content">
                     <div class="hero-tag">AI ENGINEER & DATA SCIENTIST</div>
@@ -757,7 +757,7 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <span class="project-link">View on GitHub →</span>
+                        <a href="https://github.com/slevinskygra/multi-agent-rag-system" target="_blank" class="project-link">View on GitHub →</a>
                     </div>
                 </div>
 
@@ -791,7 +791,7 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <span class="project-link">View on GitHub →</span>
+                        <a href="https://github.com/slevinskygra/finance-ai-agent" target="_blank" class="project-link">View on GitHub →</a>
                     </div>
                 </div>
 
@@ -824,7 +824,7 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <span class="project-link">View on GitHub →</span>
+                        <a href="https://github.com/slevinskygra/data-analysis-agent" target="_blank" class="project-link">View on GitHub →</a>
                     </div>
                 </div>
 
@@ -855,7 +855,7 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <span class="project-link">View on GitHub →</span>
+                        <a href="https://github.com/slevinskygra/websearch-research-agent" target="_blank" class="project-link">View on GitHub →</a>
                     </div>
                 </div>
             </div>
@@ -977,30 +977,15 @@
         });
 
         // ==============================================================
-        // GITHUB REPOSITORY LINKS - UPDATE THESE WITH YOUR ACTUAL REPOS
+        // GITHUB REPOSITORY LINKS
         // ==============================================================
-        // Replace the URLs below with your actual GitHub repository links
-        // The order corresponds to the project cards on the page:
-        // 1. Multi-Agent RAG System
-        // 2. Personal Finance Agent
-        // 3. Data Analysis Agent
-        // 4. Research Agent
-        
-        const projectLinks = document.querySelectorAll('.project-links .project-link');
-        const githubRepos = [
-            'https://github.com/slevinskygra/multi-agent-rag-system',    // Project 1
-            'https://github.com/slevinskygra/finance-ai-agent',          // Project 2
-            'https://github.com/slevinskygra/data-analysis-agent',       // Project 3
-            'https://github.com/slevinskygra/webresearch-research-agent'             // Project 4
-        ];
-
-        // Automatically apply the links to project cards
-        projectLinks.forEach((link, index) => {
-            if (githubRepos[index]) {
-                link.href = githubRepos[index];
-                link.target = '_blank';
-            }
-        });
+        // The GitHub links are now hard-coded directly in each project card.
+        // To update them, find each project card and modify the href attribute
+        // in the <a> tag within the .project-links section.
+        // 
+        // Example:
+        // <a href="YOUR-GITHUB-URL" target="_blank" class="project-link">View on GitHub →</a>
     </script>
 </body>
 </html>
+
