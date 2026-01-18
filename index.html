@@ -123,6 +123,33 @@
             max-width: 900px;
         }
 
+        .hero-with-photo {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-photo img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.3);
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
         .hero-tag {
             font-family: 'JetBrains Mono', monospace;
             color: var(--accent);
@@ -569,6 +596,16 @@
                 font-size: 3rem;
             }
 
+            .hero-with-photo {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .profile-photo img {
+                width: 150px;
+                height: 150px;
+            }
+
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -617,13 +654,18 @@
 
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-tag">AI ENGINEER & DATA SCIENTIST</div>
-                <h1>Building intelligent <span class="highlight">AI agents</span> that solve real-world problems</h1>
-                <p class="hero-subtitle">PhD Physicist specialized in predictive modeling, deep learning, and multi-agent systems. Expert in Python, RAG architectures, and production-grade AI solutions.</p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            <div class="hero-with-photo">
+                <div class="profile-photo">
+                    <img src="assets/profile.png" alt="Sergi G. Leyva">
+                </div>
+                <div class="hero-content">
+                    <div class="hero-tag">AI ENGINEER & DATA SCIENTIST</div>
+                    <h1>Building intelligent <span class="highlight">AI agents</span> that solve real-world problems</h1>
+                    <p class="hero-subtitle">PhD Physicist specialized in predictive modeling, deep learning, and multi-agent systems. Expert in Python, RAG architectures, and production-grade AI solutions.</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -934,15 +976,25 @@
             observer.observe(element);
         });
 
-        // Add GitHub links dynamically
+        // ==============================================================
+        // GITHUB REPOSITORY LINKS - UPDATE THESE WITH YOUR ACTUAL REPOS
+        // ==============================================================
+        // Replace the URLs below with your actual GitHub repository links
+        // The order corresponds to the project cards on the page:
+        // 1. Multi-Agent RAG System
+        // 2. Personal Finance Agent
+        // 3. Data Analysis Agent
+        // 4. Research Agent
+        
         const projectLinks = document.querySelectorAll('.project-links .project-link');
         const githubRepos = [
-            'https://github.com/slevinskygra/multi-agent-rag-system',
-            'https://github.com/slevinskygra/finance-agent-v2',
-            'https://github.com/slevinskygra/data-analysis-agent',
-            'https://github.com/slevinskygra/research-agent'
+            'https://github.com/slevinskygra/multi-agent-rag-system',    // Project 1
+            'https://github.com/slevinskygra/finance-ai-agent',          // Project 2
+            'https://github.com/slevinskygra/data-analysis-agent',       // Project 3
+            'https://github.com/slevinskygra/webresearch-research-agent'             // Project 4
         ];
 
+        // Automatically apply the links to project cards
         projectLinks.forEach((link, index) => {
             if (githubRepos[index]) {
                 link.href = githubRepos[index];
