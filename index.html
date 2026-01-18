@@ -366,9 +366,37 @@
         }
 
         .project-complexity {
-            display: flex;
-            gap: 0.3rem;
+            display: inline-block;
             margin-bottom: 1rem;
+        }
+
+        .complexity-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .complexity-expert {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 107, 107, 0.1));
+            color: var(--accent-warm);
+            border: 1px solid var(--accent-warm);
+        }
+
+        .complexity-advanced {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(0, 217, 255, 0.1));
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .complexity-intermediate {
+            background: linear-gradient(135deg, rgba(100, 200, 150, 0.2), rgba(100, 200, 150, 0.1));
+            color: #64c896;
+            border: 1px solid #64c896;
         }
 
         .star {
@@ -729,11 +757,7 @@
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-complexity">
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
+                            <span class="complexity-badge complexity-expert">Expert Level</span>
                         </div>
                         <h3 class="project-title">Multi-Agent RAG System</h3>
                         <p class="project-subtitle">Intelligent Document Q&A with Specialized Agents</p>
@@ -764,10 +788,7 @@
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-complexity">
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
+                            <span class="complexity-badge complexity-advanced">Advanced</span>
                         </div>
                         <h3 class="project-title">Personal Finance Agent</h3>
                         <p class="project-subtitle">Stateful Financial Tracking with Live Stock Data</p>
@@ -791,16 +812,14 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/slevinskygra/finance-ai-agent" target="_blank" class="project-link">View on GitHub →</a>
+                        <a href="https://github.com/slevinskygra/finance-agent-v2" target="_blank" class="project-link">View on GitHub →</a>
                     </div>
                 </div>
 
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-complexity">
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
+                            <span class="complexity-badge complexity-advanced">Advanced</span>
                         </div>
                         <h3 class="project-title">Data Analysis Agent</h3>
                         <p class="project-subtitle">Autonomous Code-Writing Data Analyst</p>
@@ -831,8 +850,7 @@
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <div class="project-complexity">
-                            <span class="star">⭐</span>
-                            <span class="star">⭐</span>
+                            <span class="complexity-badge complexity-intermediate">Intermediate</span>
                         </div>
                         <h3 class="project-title">Research Agent</h3>
                         <p class="project-subtitle">Web Search & Information Synthesis</p>
@@ -855,7 +873,7 @@
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/slevinskygra/websearch-research-agent" target="_blank" class="project-link">View on GitHub →</a>
+                        <a href="https://github.com/slevinskygra/research-agent" target="_blank" class="project-link">View on GitHub →</a>
                     </div>
                 </div>
             </div>
@@ -988,4 +1006,3 @@
     </script>
 </body>
 </html>
-
