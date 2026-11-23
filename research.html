@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research | Sergi G. Leyva</title>
+  <meta name="description" content="Research projects of Sergi G. Leyva: ion transport in patterned and active nanochannels, self-oscillating and active colloids, driven colloids, clogging and capillary imbibition.">
+  <link rel="canonical" href="https://slevinskygra.github.io/research.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Research | Sergi G. Leyva">
+  <meta property="og:description" content="Research projects of Sergi G. Leyva: ion transport in patterned and active nanochannels, self-oscillating and active colloids, driven colloids, clogging and capillary imbibition.">
+  <meta property="og:url" content="https://slevinskygra.github.io/research.html">
+  <meta property="og:image" content="https://slevinskygra.github.io/assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/stix-two-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="index.html">Sergi G. Leyva<small>Theory and simulation of soft matter and nanofluidics</small></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="research.html" aria-current="page">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="about.html">About &amp; CV</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wall" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <header class="page-head">
+        <h1>Research</h1>
+        <p class="lede">I study how hydrodynamic and electrostatic couplings organize matter out of equilibrium, and develop the simulation tools needed to see it. Most projects combine particle-based and continuum simulations with analytical theory, and many are carried out together with experimental groups.</p>
+      </header>
+
+      <nav aria-label="Projects on this page" style="padding-bottom:clamp(2rem,4vw,3rem)">
+        <ul class="toc">
+          <li>
+            <p class="toc-area"><a href="#nanofluidics">Nanofluidics and iontronics</a></p>
+            <ul>
+              <li><a href="#symmetry-breaking">Spontaneous flow from active ionic fluxes</a></li>
+              <li><a href="#patterned-channels">Gating and rectification in patterned channels</a></li>
+            </ul>
+          </li>
+          <li>
+            <p class="toc-area"><a href="#active-colloids">Active and self-oscillating colloids</a></p>
+            <ul>
+              <li><a href="#synchronematic">Synchronematic order</a></li>
+              <li><a href="#active-rafts">Active rafts and magnetic microswimmers</a></li>
+            </ul>
+          </li>
+          <li>
+            <p class="toc-area"><a href="#confined-flows">Driven colloids and capillary flows</a></p>
+            <ul>
+              <li><a href="#driven-colloids">Synchronization, clustering and clogging</a></li>
+              <li><a href="#capillarity">Imbibition in lubricant-coated channels</a></li>
+              <li><a href="#methods">Methods and software</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <section class="area" id="nanofluidics" aria-labelledby="nanofluidics-h">
+        <header>
+          <h2 id="nanofluidics-h">Nanofluidics and iontronics</h2>
+          <p>In channels a few nanometres wide, an electrolyte no longer behaves like a bulk liquid: surface charge, slip and confinement tie electrostatics to flow. I study how patterned and active channel walls can control, and even generate, ionic transport, the basic ingredients of iontronic and neuromorphic devices.</p>
+        </header>
+
+        <article class="project project-wide" id="symmetry-breaking">
+          <div class="text">
+            <h3>Spontaneous flow from active ionic fluxes</h3>
+            <p>Biological ion channels and pumps move charge without any external voltage, whereas synthetic nanofluidic devices usually need one. We considered a nanochannel whose walls carry a perfectly symmetric pattern of surface charge together with active cation sources and sinks. Combining dissipative particle dynamics with explicit ions, lattice-Boltzmann simulations and continuum theory, we found that above a critical active flux the channel spontaneously breaks its left–right symmetry and drives a directed flow, reaching hundreds of millimetres per second for realistic parameters.</p>
+            <p>The onset is a supercritical pitchfork bifurcation, set by the competition between advective ion transport and electro-diffusive relaxation. For large-scale particle simulations I implemented local ion injection and removal in LAMMPS.</p>
+            <div class="related"><b>Related work</b>
+              <ul><li><a href="publications.html#prl-2026">Active ionic fluxes induce symmetry breaking in charge-patterned nanochannels</a>, <i>Phys. Rev. Lett.</i> <b>137</b>, 148202 (2026)</li></ul>
+            </div>
+          </div>
+          <div class="figs">
+            <figure class="fig">
+              <div class="fig-frame"><img src="assets/img/research/ssb.webp" alt="Two simulation snapshots of red cations and blue anions between grey walls with green absorption and yellow emission regions; in the second snapshot the ion cloud is displaced to one side." width="1345" height="288" loading="lazy"></div>
+              <figcaption><b>Symmetry breaking.</b> Dissipative particle dynamics snapshots below (a) and above (b) the critical flux. Cations are red, anions blue; yellow and green mark cation emission and absorption on the walls. Adapted from Leyva, Shrestha and Olvera de la Cruz, <i>Phys. Rev. Lett.</i> (2026).</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="project" id="patterned-channels">
+          <div class="text">
+            <h3>Gating and rectification in charge-patterned nanochannels</h3>
+            <p>Decorating a straight channel with alternating positive and negative patches is enough to produce strongly nonlinear transport. Driven by a pressure gradient, the electrolyte jumps discontinuously from a slow, ionic flow to a fast, Poiseuille-like one, a digital on/off response that we captured with lattice-Boltzmann and dissipative particle dynamics simulations and an analytical theory. The work was an Editors’ Suggestion in <i>Physical Review Letters</i> and was featured in <i>Physics</i>.</p>
+            <p>Isolated charged patches also trap clouds of counterions whose stability follows from a balance of electrostatic, viscous and diffusive forces. When a field and a pressure gradient act together, the trapped charge produces diode-like rectification in a channel with no geometric asymmetry, and moving patches can drag charge along the channel.</p>
+            <div class="related"><b>Related work</b>
+              <ul><li><a href="publications.html#prl-2024">Discontinuous transition in electrolyte flow through charge-patterned nanochannels</a>, <i>Phys. Rev. Lett.</i> <b>133</b>, 078201 (2024)</li><li><a href="publications.html#fd-2026">Charge localization, rectification, and transport in electrolyte patchy nanochannels</a>, <i>Faraday Discuss.</i> (2026)</li></ul>
+            </div>
+          </div>
+          <div class="figs">
+            <figure class="fig">
+              <div class="fig-frame"><img src="assets/img/research/prl24-schematic.webp" alt="Schematic of a nanochannel with alternating blue and red surface-charge patches on both walls, ions inside, and a pressure gradient along the channel." width="749" height="291" loading="lazy"></div>
+              <figcaption><b>Charge-patterned channel.</b> Patches of charge σ<sup>±</sup> of length <i>l</i> alternate along both walls of a channel of width <i>w</i>, driven by a pressure gradient <i>G<sub>x</sub></i>. Adapted from Curk, Leyva and Pagonabarraga, <i>Phys. Rev. Lett.</i> (2024).</figcaption>
+            </figure>
+            <figure class="fig">
+              <div class="fig-frame"><img src="assets/img/research/fd26-charge.webp" alt="Two lattice-Boltzmann maps of charge density in a channel, showing a counterion cloud bound to a patch and then released." width="973" height="418" loading="lazy"></div>
+              <figcaption><b>Trapped charge.</b> Lattice-Boltzmann charge density around a single patch: the counterion cloud stays bound without a voltage (top) and is released above a threshold voltage (bottom). Adapted from Leyva <i>et al.</i>, <i>Faraday Discuss.</i> (2026).</figcaption>
+            </figure>
+          </div>
+        </article>
+      </section>
+
+      <section class="area" id="active-colloids" aria-labelledby="active-colloids-h">
+        <header>
+          <h2 id="active-colloids-h">Active and self-oscillating colloids</h2>
+          <p>Colloids powered by electric fields, light or chemical reactions are clean model systems for active matter. I am interested in how fluid-mediated interactions between such particles produce collective order, usually working closely with experiments.</p>
+        </header>
+
+        <article class="project" id="synchronematic">
+          <div class="text">
+            <h3>Synchronematic order in self-oscillating colloids</h3>
+            <p>Under a steady electric field, Quincke colloids can rock back and forth on their own, behaving as self-oscillating units with a position, an orientation, a frequency and a phase. To compare with experiments by Zhengyan Zhang and Kyle Bishop at Columbia, I extended GPU-accelerated Stokesian dynamics simulations with a multipolar electrostatic model of Quincke rotation.</p>
+            <p>Hydrodynamic interactions synchronize the oscillators and align their orientations, a new collective state that we called synchronematic order. In crystalline clusters the particles lock into circular alignment and oscillate faster the larger the cluster. A reduced swarmalator-type model, derived from the theory of weakly coupled oscillators, explains these trends through reciprocal Kuramoto-like and non-reciprocal Sakaguchi-type couplings.</p>
+            <div class="related"><b>Related work</b>
+              <ul><li><a href="publications.html#nc-2026">Self-oscillating synchronematic colloids</a>, <i>Nat. Commun.</i> <b>17</b>, 1841 (2026)</li></ul>
+            </div>
+          </div>
+          <div class="figs">
+            <figure class="fig">
+              <div class="fig-frame"><img src="assets/img/research/nc26-experiment.webp" alt="Microscope image of three round clusters of colloids, each particle marked by a small ellipse; each cluster has a single colour, showing that its particles oscillate in phase." width="672" height="474" loading="lazy"></div>
+              <figcaption><b>Experiment.</b> Crystalline assemblies of synchronized oscillators with circular alignment. Markers show each particle’s orientation and are coloured by oscillation phase; scale bar 100&nbsp;μm.</figcaption>
+            </figure>
+            <figure class="fig">
+              <div class="fig-frame"><img src="assets/img/research/nc26-crystals.webp" alt="Two simulated circular clusters of oscillators coloured by phase." width="622" height="335" loading="lazy"></div>
+              <figcaption><b>Reduced model.</b> Simulated clusters of 84 and 474 oscillators: circular alignment in the small one, disrupted by non-reciprocal interactions in the large one. Both panels adapted from Leyva <i>et al.</i>, <i>Nat. Commun.</i> (2026).</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="project" id="active-rafts">
+          <div class="text">
+            <h3>Active rafts and magnetic microswimmers</h3>
+            <p>A light-activated catalytic particle surrounded by passive microspheres assembles into a colloidal raft that propels itself. Using the Lorentz reciprocal theorem together with simulations, we showed that the propulsion mechanism switches from diffusiophoresis of the particles to diffusio-osmosis of the substrate as the raft grows shell by shell.</p>
+            <p>With Pietro Tierno’s group, we studied lithographically shaped magnetic microtriangles driven by a precessing field. Close to the bottom plane they slide in a surfing-like mode, and I developed the minimal model showing how friction asymmetry turns this sliding into a transverse drift that can steer the triangles in any direction.</p>
+            <div class="related"><b>Related work</b>
+              <ul><li><a href="publications.html#nc-2024">Clustering induces switching between phoretic and osmotic propulsion in active colloidal rafts</a>, <i>Nat. Commun.</i> <b>15</b>, 5666 (2024)</li><li><a href="publications.html#nl-2022">Friction induces anisotropic propulsion in sliding magnetic microtriangles</a>, <i>Nano Lett.</i> <b>22</b>, 7408–7414 (2022)</li></ul>
+            </div>
+          </div>
+          <div class="figs">
+            <figure class="fig">
+              <div class="fig-frame"><img src="assets/img/research/nc24-raft.webp" alt="Schematic of a catalytic particle under blue light surrounded by passive spheres, with hydrogen peroxide decomposition." width="386" height="320" loading="lazy"></div>
+              <figcaption><b>Active raft.</b> Light-activated decomposition of H<sub>2</sub>O<sub>2</sub> on a catalytic particle drives the assembly of passive spheres around it. Adapted from Boniface, Leyva <i>et al.</i>, <i>Nat. Commun.</i> (2024).</figcaption>
+            </figure>
+            <figure class="fig">
+              <div class="fig-frame"><img src="assets/img/research/nl22-triangle.webp" alt="Electron micrograph of a triangular microparticle and the zigzag trajectory it follows on a surface." width="734" height="379" loading="lazy"></div>
+              <figcaption><b>Steerable microtriangle.</b> Trajectory of a magnetically driven triangle; inset, electron micrograph. Adapted from Junot, Leyva <i>et al.</i>, <i>Nano Lett.</i> (2022).</figcaption>
+            </figure>
+          </div>
+        </article>
+      </section>
+
+      <section class="area" id="confined-flows" aria-labelledby="confined-flows-h">
+        <header>
+          <h2 id="confined-flows-h">Driven colloids and capillary flows</h2>
+          <p>Much of my PhD dealt with transport through structured, confined environments: colloids pushed across periodic and disordered landscapes, and liquids invading channels whose walls are coated by another liquid.</p>
+        </header>
+
+        <article class="project" id="driven-colloids">
+          <div class="text">
+            <h3>Synchronization, clustering and clogging of driven colloids</h3>
+            <p>Paramagnetic colloids driven by a travelling-wave magnetic landscape form an experimentally accessible ratchet. To model the experiments of Pietro Tierno’s group, I wrote a Brownian dynamics code with long-range hydrodynamic interactions. Hydrodynamics resynchronizes the particles with the travelling wave, doubling their speed, and makes clusters grow perpendicular to the driving direction.</p>
+            <p>Pushed against a disordered landscape of obstacles, the same particles clog when they desynchronize from the wave. In simulations of driven suspensions in disordered media, I showed that clogging is preceded by a wide regime of anomalous, intermittent transport in which mobile and arrested particles coexist.</p>
+            <div class="related"><b>Related work</b>
+              <ul><li><a href="publications.html#sa-2022">Hydrodynamic synchronization and clustering in ratcheting colloidal matter</a>, <i>Sci. Adv.</i> <b>8</b>, eabo4546 (2022)</li><li><a href="publications.html#sm-2020">Dynamics and clogging of colloidal monolayers magnetically driven through a heterogeneous landscape</a>, <i>Soft Matter</i> <b>16</b>, 6985–6992 (2020)</li><li><a href="publications.html#pre-2024">Clogging transition and anomalous transport in driven suspensions in a disordered medium</a>, <i>Phys. Rev. E</i> <b>109</b>, 014618 (2024)</li></ul>
+            </div>
+          </div>
+          <div class="figs">
+            <figure class="fig">
+              <div class="fig-frame"><img src="assets/img/research/sm20-cover.webp" alt="Rendering of green colloids driven across a corrugated substrate against larger blue obstacles." width="1400" height="1013" loading="lazy"></div>
+              <figcaption><b>Cover of <i>Soft Matter</i>.</b> Paramagnetic colloids driven against a barrier of larger obstacles with a narrow opening. From Leyva <i>et al.</i>, <i>Soft Matter</i> (2020).</figcaption>
+            </figure>
+            <figure class="fig">
+              <div class="fig-frame"><img src="assets/img/research/pre24-clogging.webp" alt="Three simulation snapshots of particles in a disordered landscape, with coloured particle trajectories." width="1321" height="399" loading="lazy"></div>
+              <figcaption><b>Towards clogging.</b> Simulations of driven particles in a disordered medium, from normal flow (left) to anomalous, intermittent flow (centre and right) as the fraction of pinned obstacles and the particle density grow; coloured lines trace particle trajectories. Adapted from Leyva and Pagonabarraga, <i>Phys. Rev. E</i> (2024).</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="project" id="capillarity">
+          <div class="text">
+            <h3>Capillary imbibition in lubricant-coated channels</h3>
+            <p>Friction with the walls limits how fast a liquid can invade a channel. I implemented a ternary free-energy model in the open-source lattice-Boltzmann code Ludwig to study channels coated by a thin lubricant layer. When the lubricant is much less viscous than the invading liquid, dissipation concentrates in the lubricant and the front advances linearly in time instead of following Washburn’s law; under forcing it grows exponentially.</p>
+            <p>Experiments in liquid-infused microchannels, for which I contributed the modelling, confirmed the speed-up, with imbibition times reduced by up to 50%. A research stay at the University of Edinburgh extended this work to contact-line dynamics on lubricated surfaces.</p>
+            <div class="related"><b>Related work</b>
+              <ul><li><a href="publications.html#prf-2024">Capillary imbibition in lubricant-coated channels</a>, <i>Phys. Rev. Fluids</i> <b>9</b>, L072002 (2024)</li><li><a href="publications.html#langmuir-2024">Enhanced imbibition in liquid-infused coated microchannels</a>, <i>Langmuir</i> <b>40</b>, 26600–26606 (2024)</li></ul>
+            </div>
+          </div>
+          <div class="figs">
+            <figure class="fig">
+              <div class="fig-frame"><img src="assets/img/research/prf24-imbibition.webp" alt="Lattice-Boltzmann geometry of a liquid invading a lubricant-coated channel, with plots of front position and velocity profile." width="1028" height="761" loading="lazy"></div>
+              <figcaption><b>Lubricated imbibition.</b> Geometry, front position and velocity profile across the lubricant layer. Adapted from Leyva <i>et al.</i>, <i>Phys. Rev. Fluids</i> (2024).</figcaption>
+            </figure>
+          </div>
+        </article>
+      </section>
+
+      <section class="area" id="methods" aria-labelledby="methods-h">
+        <header>
+          <h2 id="methods-h">Methods and software</h2>
+          <p>I pick the level of description each question needs, and write or extend the code when no existing tool does the job.</p>
+        </header>
+        <dl class="methods">
+          <div>
+            <dt>Lattice-Boltzmann</dt>
+            <dd>Electrokinetics with patterned surface charge, and a ternary free-energy model for three-phase flows that I implemented in <a href="https://zenodo.org/records/18434571">Ludwig</a> and that is now part of the main code.<span class="sans">C</span></dd>
+          </div>
+          <div>
+            <dt>Dissipative particle dynamics with explicit ions</dt>
+            <dd>Large-scale simulations of confined electrolytes, with custom modifications for local ion injection and removal, and a hybrid molecular dynamics and Monte Carlo scheme for charge regulation.<span class="sans">LAMMPS, C++</span></dd>
+          </div>
+          <div>
+            <dt>Stokesian dynamics</dt>
+            <dd>Many-body hydrodynamics near a wall, including lubrication, extended with a multipolar model of Quincke electrohydrodynamics in <a href="https://github.com/stochastichydrotools/rigidmultiblobswall">RigidMultiblobsWall</a>.<span class="sans">Python, GPU</span></dd>
+          </div>
+          <div>
+            <dt>Brownian and Langevin dynamics</dt>
+            <dd>In-house codes for magnetically driven colloids with long-range hydrodynamic interactions.<span class="sans">Fortran 90</span></dd>
+          </div>
+          <div>
+            <dt>Analytical theory</dt>
+            <dd>Poisson–Nernst–Planck–Stokes models, bifurcation analysis, the Lorentz reciprocal theorem and weakly coupled oscillator theory, used to isolate the minimal mechanism behind simulations and experiments.</dd>
+          </div>
+          <div>
+            <dt>Inference and high-performance computing</dt>
+            <dd>Probabilistic state estimation of hidden oscillator states from experimental trajectories, and production runs on MareNostrum (Barcelona Supercomputing Center) and Quest (Northwestern).<span class="sans">Python</span></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="area" aria-labelledby="next-h">
+        <header style="margin-bottom:0">
+          <h2 id="next-h">Next directions</h2>
+          <p>The surface charge, slip and friction that control the transport described above are set by the chemistry of real interfaces. I am increasingly interested in connecting that chemistry, resolved with first-principles and machine-learned simulations, to the mesoscale transport laws that coarse-grained models rely on, with selective membranes and energy conversion in mind.</p>
+        </header>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wall" aria-hidden="true"></div>
+    <div class="wrap">
+      <address>
+        Sergi G. Leyva, Center for Computation and Theory of Soft Materials, Northwestern University, Evanston, Illinois<br>
+        <a href="mailto:sergigraley@gmail.com">sergigraley@gmail.com</a>
+      </address>
+      <ul>
+        <li><a href="https://scholar.google.com/citations?user=Cr-qqGAAAAAJ">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0000-0001-9176-9285">ORCID</a></li>
+        <li><a href="https://github.com/slevinskygra">GitHub</a></li>
+        <li><a href="assets/Sergi_Granados_CV.pdf">CV (PDF)</a></li>
+      </ul>
+      <p style="margin:0;width:100%">Last updated November 2026.</p>
+    </div>
+  </footer>
+</body>
+</html>

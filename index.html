@@ -1,1156 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sergi G. Leyva | Computational Physicist & Researcher</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0d1117;
-            --secondary: #161b22;
-            --tertiary: #21262d;
-            --accent: #58a6ff;
-            --accent-secondary: #79c0ff;
-            --accent-warm: #f78166;
-            --text: #c9d1d9;
-            --text-dim: #8b949e;
-            --border: #30363d;
-            --border-accent: rgba(88, 166, 255, 0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Crimson Pro', serif;
-            background: var(--primary);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* Subtle background pattern */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(88, 166, 255, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(247, 129, 102, 0.02) 0%, transparent 50%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(13, 17, 23, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 1.25rem 2rem;
-            z-index: 100;
-            animation: slideDown 0.5s ease;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent);
-            letter-spacing: 0.05em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
-            letter-spacing: 0.02em;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 2rem 4rem;
-        }
-
-        .hero .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .profile-section {
-            opacity: 0;
-            animation: fadeIn 0.8s ease 0.2s forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        .profile-photo {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
-        .profile-photo img {
-            width: 100%;
-            border-radius: 8px;
-            border: 2px solid var(--border);
-            transition: border-color 0.3s ease;
-        }
-
-        .profile-photo:hover img {
-            border-color: var(--accent);
-        }
-
-        .profile-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .profile-link {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: var(--text-dim);
-            text-decoration: none;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.8rem;
-            transition: color 0.3s ease;
-            padding: 0.4rem 0;
-        }
-
-        .profile-link:hover {
-            color: var(--accent);
-        }
-
-        .profile-link svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-
-        .hero-content {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
-
-        .hero-description {
-            font-size: 1.15rem;
-            color: var(--text-dim);
-            margin-bottom: 2rem;
-            max-width: 700px;
-            line-height: 1.8;
-        }
-
-        .hero-meta {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
-
-        .meta-label {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .meta-value {
-            font-size: 1.1rem;
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1.25rem;
-        }
-
-        .btn {
-            padding: 0.9rem 1.8rem;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.9rem;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            display: inline-block;
-            letter-spacing: 0.02em;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(88, 166, 255, 0.3);
-        }
-
-        .btn-secondary {
-            border: 1px solid var(--border);
-            color: var(--text);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 5rem 2rem;
-            position: relative;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            margin-bottom: 3.5rem;
-        }
-
-        .section-tag {
-            font-family: 'IBM Plex Mono', monospace;
-            color: var(--accent);
-            font-size: 0.8rem;
-            margin-bottom: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            font-weight: 500;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        .section-description {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            max-width: 800px;
-            line-height: 1.8;
-        }
-
-        /* Research Interests */
-        .research-content {
-            max-width: 900px;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            color: var(--text-dim);
-        }
-
-        .research-content p {
-            margin-bottom: 1.8rem;
-        }
-
-        .research-topics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .topic-card {
-            background: var(--secondary);
-            padding: 1.8rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .topic-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .topic-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 0.8rem;
-        }
-
-        .topic-description {
-            font-size: 0.95rem;
-            color: var(--text-dim);
-            line-height: 1.6;
-        }
-
-        /* Publications */
-        .publications-intro {
-            background: var(--secondary);
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
-            margin-bottom: 3rem;
-        }
-
-        .publications-intro p {
-            font-size: 1.05rem;
-            color: var(--text-dim);
-            line-height: 1.7;
-        }
-
-        .publications-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .publication-item {
-            background: var(--secondary);
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .publication-item:hover {
-            border-color: var(--accent);
-            transform: translateX(8px);
-        }
-
-        .publication-year {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--accent);
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .publication-authors {
-            font-size: 0.95rem;
-            color: var(--text);
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
-        }
-
-        .publication-authors strong {
-            color: var(--accent-secondary);
-        }
-
-        .publication-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 0.6rem;
-            line-height: 1.5;
-        }
-
-        .publication-venue {
-            font-style: italic;
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .publication-badges {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .badge-editor {
-            background: rgba(247, 129, 102, 0.15);
-            color: var(--accent-warm);
-            border: 1px solid rgba(247, 129, 102, 0.3);
-        }
-
-        .badge-equal {
-            background: rgba(88, 166, 255, 0.15);
-            color: var(--accent);
-            border: 1px solid rgba(88, 166, 255, 0.3);
-        }
-
-        .badge-preprint {
-            background: rgba(139, 148, 158, 0.15);
-            color: var(--text-dim);
-            border: 1px solid var(--border);
-        }
-
-        /* Education & Experience */
-        .timeline {
-            position: relative;
-            padding-left: 2.5rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-left: 2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.5rem;
-            top: 0.4rem;
-            width: 10px;
-            height: 10px;
-            background: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px var(--primary), 0 0 0 6px var(--border);
-        }
-
-        .timeline-period {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .timeline-title {
-            font-size: 1.35rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 0.4rem;
-        }
-
-        .timeline-institution {
-            font-size: 1.05rem;
-            color: var(--text-dim);
-            margin-bottom: 0.3rem;
-        }
-
-        .timeline-location {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            margin-bottom: 1rem;
-        }
-
-        .timeline-description {
-            color: var(--text-dim);
-            line-height: 1.7;
-        }
-
-        .timeline-description ul {
-            margin-top: 0.8rem;
-            padding-left: 1.5rem;
-        }
-
-        .timeline-description li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Skills & Expertise */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: var(--secondary);
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-
-        .skill-category h3 {
-            font-size: 1.15rem;
-            color: var(--accent);
-            margin-bottom: 1.2rem;
-            font-weight: 600;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-
-        .skill-tag {
-            background: var(--tertiary);
-            color: var(--text-dim);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.8rem;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--accent);
-        }
-
-        .contact-details h3 {
-            font-size: 1rem;
-            color: var(--text);
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-details p {
-            font-size: 0.95rem;
-            color: var(--text-dim);
-        }
-
-        .contact-details a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-details a:hover {
-            color: var(--accent-secondary);
-        }
-
-        /* Footer */
-        footer {
-            padding: 2.5rem 2rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--text-dim);
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .profile-section {
-                display: grid;
-                grid-template-columns: 200px 1fr;
-                gap: 2rem;
-                align-items: start;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .research-topics {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sergi G. Leyva | Soft matter and nanofluidics</title>
+  <meta name="description" content="Sergi G. Leyva is a theoretical and computational physicist working on ion transport in nanochannels, active colloids and confined flows, at Northwestern University.">
+  <link rel="canonical" href="https://slevinskygra.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sergi G. Leyva | Soft matter and nanofluidics">
+  <meta property="og:description" content="Sergi G. Leyva is a theoretical and computational physicist working on ion transport in nanochannels, active colloids and confined flows, at Northwestern University.">
+  <meta property="og:url" content="https://slevinskygra.github.io/">
+  <meta property="og:image" content="https://slevinskygra.github.io/assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/stix-two-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Sergi G. Leyva", "alternateName": "Sergio Granados Leyva", "url": "https://slevinskygra.github.io/", "image": "https://slevinskygra.github.io/assets/img/profile.webp", "jobTitle": "Postdoctoral Researcher", "affiliation": {"@type": "Organization", "name": "Northwestern University"}, "alumniOf": {"@type": "CollegeOrUniversity", "name": "Universitat de Barcelona"}, "sameAs": ["https://scholar.google.com/citations?user=Cr-qqGAAAAAJ", "https://orcid.org/0000-0001-9176-9285", "https://github.com/slevinskygra"], "knowsAbout": ["Nanofluidics", "Electrokinetics", "Soft matter", "Active matter", "Lattice Boltzmann", "Dissipative particle dynamics"]}</script>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <div class="logo">S. G. LEYVA</div>
-            <ul class="nav-links">
-                <li><a href="#research">Research</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="index.html">Sergi G. Leyva<small>Theory and simulation of soft matter and nanofluidics</small></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="about.html">About &amp; CV</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wall" aria-hidden="true"></div>
+  </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="profile-section">
-                    <div class="profile-photo">
-                        <img src="assets/profile.png" alt="Sergio G. Leyva">
-                    </div>
-                    <div class="profile-links">
-                        <a href="mailto:sergigraley@gmail.com" class="profile-link">
-                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                            Email
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=Cr-qqGAAAAAJ&hl=es" target="_blank" class="profile-link">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                            Google Scholar
-                        </a>
-                        <a href="https://orcid.org/0000-0001-9176-9285" target="_blank" class="profile-link">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                            ORCID
-                        </a>
-                        <a href="https://github.com/slevinskygra" target="_blank" class="profile-link">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.14 20.16 22 16.42 22 12c0-5.52-4.48-10-10-10z"/></svg>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-content">
-                    <h1 class="hero-title">Sergi G. Leyva</h1>
-                    <h2 class="hero-subtitle">Computational Physicist & Postdoctoral Researcher</h2>
-                    <p class="hero-description">
-                        Exploring the complex dynamics of soft matter, active systems, and electrohydrodynamics through computational modeling and theoretical physics. Currently advancing neuromorphic computing and iontronic technologies at Northwestern University.
-                    </p>
-                    <div class="hero-meta">
-                        <div class="meta-item">
-                            <div class="meta-label">Position</div>
-                            <div class="meta-value">Postdoctoral Researcher</div>
-                        </div>
-                        <div class="meta-item">
-                            <div class="meta-label">Institution</div>
-                            <div class="meta-value">Northwestern University</div>
-                        </div>
-                        <div class="meta-item">
-                            <div class="meta-label">h-index</div>
-                            <div class="meta-value">5 (45 citations)</div>
-                        </div>
-                        <div class="meta-item">
-                            <div class="meta-label">Publications</div>
-                            <div class="meta-value">10 published</div>
-                        </div>
-                    </div>
-                    <div class="hero-cta">
-                        <a href="#publications" class="btn btn-primary">View Publications</a>
-                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
-                    </div>
-                </div>
-            </div>
+  <main id="main">
+    <div class="wrap">
+      <section class="title-block" aria-labelledby="title">
+        <div>
+          <h1 class="paper-title" id="title">Fluid-mediated interactions and self-organized transport, from nanochannels to active colloids</h1>
+          <p class="byline"><strong>Sergi G. Leyva</strong><sup>1,2</sup></p>
+          <p class="affil"><sup>1</sup>Center for Computation and Theory of Soft Materials, Northwestern University, Evanston, IL, USA<br><sup>2</sup>Department of Physics and Astronomy, Northwestern University, Evanston, IL, USA</p>
+          <div class="abstract">
+            <p>I am a theoretical and computational physicist working on soft matter far from equilibrium. I study how hydrodynamic and electrostatic couplings make ions, colloids and liquids organize themselves under confinement: nanochannels that pump fluid with no applied voltage, self-oscillating colloids that synchronize through the liquid around them, and liquids that invade channels faster when the walls are lubricated.</p>
+            <p>My work combines lattice-Boltzmann, dissipative particle dynamics and Stokesian dynamics simulations with analytical theory, often side by side with experiments. I am a postdoctoral researcher with Monica Olvera de la Cruz at Northwestern University, after a PhD in statistical physics at the University of Barcelona.</p>
+          </div>
+          <ul class="contact-links">
+            <li><a href="mailto:sergigraley@gmail.com">Email</a></li>
+            <li><a href="https://scholar.google.com/citations?user=Cr-qqGAAAAAJ">Google Scholar</a></li>
+            <li><a href="https://orcid.org/0000-0001-9176-9285">ORCID</a></li>
+            <li><a href="https://github.com/slevinskygra">GitHub</a></li>
+            <li><a href="assets/Sergi_Granados_CV.pdf">CV (PDF)</a></li>
+          </ul>
         </div>
+        <figure class="portrait">
+          <img src="assets/img/profile.webp" alt="Portrait of Sergi G. Leyva" width="560" height="560">
+        </figure>
+      </section>
+
+      <figure class="fig channel-fig" id="fig-1" data-channel>
+        <div class="channel-stage">
+          <canvas class="channel" role="img" aria-label="Animated sketch: red positive ions and blue negative ions between two walls carrying alternating charged patches. Above a critical active flux, ions and fluid start flowing in one direction."></canvas>
+        </div>
+        <div class="channel-controls">
+          <div class="flux-control">
+            <label for="flux">Active ionic flux</label>
+            <input id="flux" type="range" min="0" max="100" step="1" value="78">
+            <div class="flux-scale" aria-hidden="true"><span>none</span><span class="crit">critical flux</span><span>high</span></div>
+          </div>
+          <div class="readout">
+            <canvas class="trace" aria-hidden="true"></canvas>
+            <span>Net flow</span>
+            <strong data-readout>none yet</strong>
+          </div>
+          <div>
+            <button class="btn" type="button" data-restart>Restart</button>
+            <button class="btn" type="button" data-play>Pause</button>
+          </div>
+        </div>
+        <figcaption><b>Fig. 1.</b> An electrolyte in a nanochannel whose walls carry a mirror-symmetric pattern of surface charge (red&nbsp;+, blue&nbsp;−) and active ionic fluxes: cations are released at the positive patches and absorbed at the negative ones. Below a critical flux nothing flows. Above it, ions and solvent start moving in a direction the channel picks at random; press Restart, or click the channel, to let it choose again. The mean flow follows the normal form of a supercritical pitchfork bifurcation, as found with particle and lattice-Boltzmann simulations in <a href="https://doi.org/10.1103/k9sp-h4c3"><i>Phys. Rev. Lett.</i> <b>137</b>, 148202 (2026)</a>. This is an illustrative sketch, not a simulation.</figcaption>
+      </figure>
+    </div>
+
+    <section class="section" aria-labelledby="research-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="research-h">Research</h2>
+          <a href="research.html">All research projects</a>
+        </div>
+        <div class="themes">
+          <article class="theme">
+            <a class="thumb" href="research.html#nanofluidics" tabindex="-1" aria-hidden="true"><img src="assets/img/thumbs/ssb-b.webp" alt="" loading="lazy"></a>
+            <h3><a href="research.html#nanofluidics">Nanofluidics and iontronics</a></h3>
+            <p>How surface-charge patterns and active ionic fluxes gate, rectify and even spontaneously drive transport through nanochannels, the building blocks of iontronic and neuromorphic devices.</p>
+          </article>
+          <article class="theme">
+            <a class="thumb" href="research.html#active-colloids" tabindex="-1" aria-hidden="true"><img src="assets/img/thumbs/nc26-experiment.webp" alt="" loading="lazy"></a>
+            <h3><a href="research.html#active-colloids">Active and self-oscillating colloids</a></h3>
+            <p>Self-oscillating Quincke colloids that synchronize and align through the surrounding fluid, and catalytic colloidal rafts that switch propulsion mechanism as they grow.</p>
+          </article>
+          <article class="theme">
+            <a class="thumb" href="research.html#confined-flows" tabindex="-1" aria-hidden="true"><img src="assets/img/thumbs/sm20-cover.webp" alt="" loading="lazy"></a>
+            <h3><a href="research.html#confined-flows">Driven colloids and capillary flows</a></h3>
+            <p>Magnetically driven colloids that synchronize, cluster and clog in structured landscapes, and liquids that imbibe faster through channels coated with a lubricant.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section id="research">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Research Interests</div>
-                <h2 class="section-title">Research Focus</h2>
-            </div>
-            <div class="research-content fade-in-section">
-                <p>
-                    My work focuses on systems where <strong>ionic transport, hydrodynamics, and soft-matter organization</strong> are deeply intertwined. One major direction concerns electrohydrodynamic ion transport at the nanoscale, where reduced friction and strong confinement give rise to fast, highly correlated ionic flows. I am particularly interested in how active ionic fluxes can couple to electrostatics and hydrodynamics to produce symmetry breaking, autonomous currents, and other emergent behaviors with potential relevance for neuromorphic and iontronic technologies.
-                </p>
-                <p>
-                    In parallel, I investigate <strong>oscillatory active media and non-reciprocal soft matter</strong>, focusing on how interactions, internal cycles, and symmetry constraints shape collective dynamics. Recent work on self-oscillating colloids has shown how hydrodynamic interactions can generate coupled orientational and temporal order, leading to mixed phase–alignment states and new forms of collective organization.
-                </p>
-                <p>
-                    Together, these efforts aim to build a multiscale understanding of how ionic, mechanical, and hydrodynamic processes can be harnessed to design adaptive, energy-efficient soft materials and functional systems.
-                </p>
-            </div>
-            <div class="research-topics">
-                <div class="topic-card fade-in-section">
-                    <div class="topic-title">Electrohydrodynamic Transport</div>
-                    <div class="topic-description">
-                        Nanoscale ionic transport with applications to neuromorphic computing and iontronic technologies
-                    </div>
-                </div>
-                <div class="topic-card fade-in-section">
-                    <div class="topic-title">Active Soft Matter</div>
-                    <div class="topic-description">
-                        Self-oscillating colloids, synchronization phenomena, and collective dynamics in driven systems
-                    </div>
-                </div>
-                <div class="topic-card fade-in-section">
-                    <div class="topic-title">Capillary Phenomena</div>
-                    <div class="topic-description">
-                        Imbibition dynamics in lubricant-coated surfaces and microfluidic systems
-                    </div>
-                </div>
-                <div class="topic-card fade-in-section">
-                    <div class="topic-title">Computational Methods</div>
-                    <div class="topic-description">
-                        Lattice-Boltzmann simulations, DPD methods, and multiscale modeling of complex fluids
-                    </div>
-                </div>
-            </div>
+    <section class="section" aria-labelledby="news-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="news-h">News</h2>
+          <a href="news.html">All news</a>
         </div>
+        <ul class="news-list measure" style="max-width:52rem">
+        <li>
+          <span class="news-date"><time datetime="2026-09-30">30 Sep 2026</time></span>
+          <h3><a href="news.html#prl-symmetry-breaking">Active nanochannels that break symmetry, out in Physical Review Letters</a></h3>
+        </li>
+        <li>
+          <span class="news-date"><time datetime="2026-09-14">14–26 Sep 2026</time></span>
+          <h3><a href="news.html#les-houches-2026">Two weeks at the Les Houches school on nonequilibrium physics in nanoconfinement</a></h3>
+        </li>
+        <li>
+          <span class="news-date"><time datetime="2026-07-07">7 Jul 2026</time></span>
+          <h3><a href="news.html#faraday-2026">Charge clouds and rectification in patchy nanochannels, in Faraday Discussions</a></h3>
+        </li>
+        </ul>
+      </div>
     </section>
 
-    <section id="publications">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Selected Works</div>
-                <h2 class="section-title">Publications</h2>
-            </div>
-            <div class="publications-intro fade-in-section">
-                <p>
-                    Since my first publication in 2020, my research has received <strong>41 citations</strong> with an <strong>h-index of 4</strong> according to Web of Science. Below is a selection of peer-reviewed journal articles including recent work published in <em>Nature Communications</em> and preprints currently under review.
-                </p>
-            </div>
-            <div class="publications-list">
-                <div class="publication-item fade-in-section">
-                    <div class="publication-year">2025 • Preprint</div>
-                    <div class="publication-authors">
-                        <strong>S. G. Leyva</strong>, Ahis Shreshta, Monica Olvera de la Cruz
-                    </div>
-                    <div class="publication-title">
-                        Active ionic fluxes induce symmetry breaking in charge-patterned nanochannels
-                    </div>
-                    <div class="publication-venue">arXiv preprint, under peer review</div>
-                    <div class="publication-badges">
-                        <span class="badge badge-preprint">Preprint</span>
-                    </div>
-                </div>
-
-                <div class="publication-item fade-in-section">
-                    <div class="publication-year">2026</div>
-                    <div class="publication-authors">
-                        <strong>S. G. Leyva</strong>, Z. Zhang, M. Olvera de la Cruz, K. J. M. Bishop
-                    </div>
-                    <div class="publication-title">
-                        Self-oscillating synchronematic colloids
-                    </div>
-                    <div class="publication-venue">Nature Communications (2026). <a href="https://doi.org/10.1038/s41467-026-68552-8" target="_blank" style="color: var(--accent); text-decoration: none;">doi:10.1038/s41467-026-68552-8</a></div>
-                </div>
-
-                <div class="publication-item fade-in-section">
-                    <div class="publication-year">2024</div>
-                    <div class="publication-authors">
-                        T. Curk, <strong>S. G. Leyva</strong>, I. Pagonabarraga
-                    </div>
-                    <div class="publication-title">
-                        Discontinuous transition in electrolyte flow through charge-patterned nanochannels
-                    </div>
-                    <div class="publication-venue">Physical Review Letters, 133(7), 078201</div>
-                    <div class="publication-badges">
-                        <span class="badge badge-editor">Editor's Suggestion</span>
-                        <span class="badge badge-equal">Equal Contribution</span>
-                    </div>
-                </div>
-
-                <div class="publication-item fade-in-section">
-                    <div class="publication-year">2024</div>
-                    <div class="publication-authors">
-                        D. Boniface, <strong>S. G. Leyva</strong>, I. Pagonabarraga, P. Tierno
-                    </div>
-                    <div class="publication-title">
-                        Clustering induces switching between phoretic and osmotic propulsion in active colloidal rafts
-                    </div>
-                    <div class="publication-venue">Nature Communications, 15(1), 5666</div>
-                    <div class="publication-badges">
-                        <span class="badge badge-equal">Equal Contribution</span>
-                    </div>
-                </div>
-
-                <div class="publication-item fade-in-section">
-                    <div class="publication-year">2024</div>
-                    <div class="publication-authors">
-                        <strong>S. G. Leyva</strong>, I. Pagonabarraga, A. Hernández-Machado, R. Ledesma-Aguilar
-                    </div>
-                    <div class="publication-title">
-                        Capillary imbibition in lubricant-coated channels
-                    </div>
-                    <div class="publication-venue">Physical Review Fluids, 9(7), L072002</div>
-                </div>
-
-                <div class="publication-item fade-in-section">
-                    <div class="publication-year">2024</div>
-                    <div class="publication-authors">
-                        <strong>S. G. Leyva</strong>, I. Pagonabarraga
-                    </div>
-                    <div class="publication-title">
-                        Clogging transition and anomalous transport in driven suspensions in a disordered medium
-                    </div>
-                    <div class="publication-venue">Physical Review E, 109(1), 014618</div>
-                </div>
-
-                <div class="publication-item fade-in-section">
-                    <div class="publication-year">2022</div>
-                    <div class="publication-authors">
-                        G. Junot, <strong>S. G. Leyva</strong>, C. Pauer, C. Calero, I. Pagonabarraga, T. Liedl, J. Tavacoli, P. Tierno
-                    </div>
-                    <div class="publication-title">
-                        Friction induces anisotropic propulsion in sliding magnetic microtriangles
-                    </div>
-                    <div class="publication-venue">Nano Letters, 22(18), 7408–7414</div>
-                    <div class="publication-badges">
-                        <span class="badge badge-equal">Equal Contribution</span>
-                    </div>
-                </div>
-
-                <div class="publication-item fade-in-section">
-                    <div class="publication-year">2022</div>
-                    <div class="publication-authors">
-                        <strong>S. G. Leyva</strong>, R. L. Stoop, I. Pagonabarraga, P. Tierno
-                    </div>
-                    <div class="publication-title">
-                        Hydrodynamic synchronization and clustering in ratcheting colloidal matter
-                    </div>
-                    <div class="publication-venue">Science Advances, 8(23), eabo4546</div>
-                </div>
-
-                <div class="publication-item fade-in-section">
-                    <div class="publication-year">2020</div>
-                    <div class="publication-authors">
-                        <strong>S. G. Leyva</strong>, R. L. Stoop, P. Tierno, I. Pagonabarraga
-                    </div>
-                    <div class="publication-title">
-                        Dynamics and clogging of colloidal monolayers magnetically driven through a heterogeneous landscape
-                    </div>
-                    <div class="publication-venue">Soft Matter, 16(30), 6985–6992</div>
-                </div>
-            </div>
+    <section class="section" aria-labelledby="pubs-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="pubs-h">Selected publications</h2>
+          <a href="publications.html">All publications</a>
         </div>
+        <ul class="pub-compact">
+        <li>
+          <a class="pub-thumb" href="https://doi.org/10.1103/k9sp-h4c3" tabindex="-1" aria-hidden="true"><img src="assets/img/thumbs/ssb-b.webp" alt="" loading="lazy"></a>
+          <div>
+            <h3 class="pub-title"><a href="https://doi.org/10.1103/k9sp-h4c3">Active ionic fluxes induce symmetry breaking in charge-patterned nanochannels</a></h3>
+            <p class="pub-authors" style="margin:0.25rem 0 0"><span class="me">S. G. Leyva</span>, A. Shrestha, and M. Olvera de la Cruz</p>
+            <p class="pub-venue" style="margin:0"><i>Phys. Rev. Lett.</i> <b>137</b>, 148202 (2026)</p>
+          </div>
+        </li>
+        <li>
+          <a class="pub-thumb" href="https://doi.org/10.1038/s41467-026-68552-8" tabindex="-1" aria-hidden="true"><img src="assets/img/thumbs/nc26-experiment.webp" alt="" loading="lazy"></a>
+          <div>
+            <h3 class="pub-title"><a href="https://doi.org/10.1038/s41467-026-68552-8">Self-oscillating synchronematic colloids</a></h3>
+            <p class="pub-authors" style="margin:0.25rem 0 0"><span class="me">S. G. Leyva</span>, Z. Zhang, M. Olvera de la Cruz, and K. J. M. Bishop</p>
+            <p class="pub-venue" style="margin:0"><i>Nat. Commun.</i> <b>17</b>, 1841 (2026)</p>
+          </div>
+        </li>
+        <li>
+          <a class="pub-thumb" href="https://doi.org/10.1103/PhysRevLett.133.078201" tabindex="-1" aria-hidden="true"><img src="assets/img/thumbs/prl24-schematic.webp" alt="" loading="lazy"></a>
+          <div>
+            <h3 class="pub-title"><a href="https://doi.org/10.1103/PhysRevLett.133.078201">Discontinuous transition in electrolyte flow through charge-patterned nanochannels</a></h3>
+            <p class="pub-authors" style="margin:0.25rem 0 0">T. Curk<sup>*</sup>, <span class="me">S. G. Leyva</span><sup>*</sup>, and I. Pagonabarraga</p>
+            <p class="pub-venue" style="margin:0"><i>Phys. Rev. Lett.</i> <b>133</b>, 078201 (2024)</p>
+          </div>
+        </li>
+        <li>
+          <a class="pub-thumb" href="https://doi.org/10.1126/sciadv.abo4546" tabindex="-1" aria-hidden="true"><img src="assets/img/thumbs/sa22-hi.webp" alt="" loading="lazy"></a>
+          <div>
+            <h3 class="pub-title"><a href="https://doi.org/10.1126/sciadv.abo4546">Hydrodynamic synchronization and clustering in ratcheting colloidal matter</a></h3>
+            <p class="pub-authors" style="margin:0.25rem 0 0"><span class="me">S. G. Leyva</span><sup>*</sup>, R. L. Stoop<sup>*</sup>, I. Pagonabarraga, and P. Tierno</p>
+            <p class="pub-venue" style="margin:0"><i>Sci. Adv.</i> <b>8</b>, eabo4546 (2022)</p>
+          </div>
+        </li>
+        </ul>
+      </div>
     </section>
-
-    <section id="experience">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Academic Journey</div>
-                <h2 class="section-title">Education & Experience</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item fade-in-section">
-                    <div class="timeline-period">June 2024 – Present</div>
-                    <div class="timeline-title">Postdoctoral Researcher</div>
-                    <div class="timeline-institution">Northwestern University, Center for Computation & Theory of Soft Materials</div>
-                    <div class="timeline-location">Evanston, Illinois, United States</div>
-                    <div class="timeline-description">
-                        Working with Prof. Monica Olvera de la Cruz on bio-inspired AI modeling, neuromorphic computing, and active ionic transport systems. Research focuses on electrohydrodynamic phenomena at the nanoscale and their applications to next-generation computing technologies.
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in-section">
-                    <div class="timeline-period">September 2019 – June 2024</div>
-                    <div class="timeline-title">PhD in Statistical Physics (Cum Laude)</div>
-                    <div class="timeline-institution">Universitat de Barcelona, Institute of Complex Systems (UBICS)</div>
-                    <div class="timeline-location">Barcelona, Spain</div>
-                    <div class="timeline-description">
-                        Supervisors: Prof. Ignacio Pagonabarraga and Prof. Aurora Hernández-Machado
-                        <ul>
-                            <li>Developed computational models for active soft matter, capillary phenomena, and colloidal dynamics</li>
-                            <li>Published 8 peer-reviewed papers in top-tier journals including Science Advances, Physical Review Letters, and Nature Communications</li>
-                            <li>Presented research at 9 international conferences across 6 countries</li>
-                            <li>Contributed to open-source scientific software (Ludwig project)</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in-section">
-                    <div class="timeline-period">May 2023 – July 2023</div>
-                    <div class="timeline-title">PhD Research Visit</div>
-                    <div class="timeline-institution">University of Edinburgh, Institute for Multiscale Thermofluids</div>
-                    <div class="timeline-location">Edinburgh, Scotland, United Kingdom</div>
-                    <div class="timeline-description">
-                        Supervisor: Dr. Rodrigo Ledesma-Aguilar. International research stay as part of the UB International PhD program, focusing on capillary imbibition dynamics in lubricant-coated systems.
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in-section">
-                    <div class="timeline-period">September 2018 – September 2019</div>
-                    <div class="timeline-title">MSc in Computational Physics</div>
-                    <div class="timeline-institution">Universitat de Barcelona / Universitat Politècnica de Catalunya</div>
-                    <div class="timeline-location">Barcelona, Spain</div>
-                    <div class="timeline-description">
-                        Specialized in atomistic and multiscale computational modeling in physics. Supervisors: Prof. Ignacio Pagonabarraga and Prof. Pietro Tierno.
-                    </div>
-                </div>
-
-                <div class="timeline-item fade-in-section">
-                    <div class="timeline-period">September 2014 – September 2018</div>
-                    <div class="timeline-title">BSc in Physics</div>
-                    <div class="timeline-institution">Universitat de Barcelona</div>
-                    <div class="timeline-location">Barcelona, Spain</div>
-                    <div class="timeline-description">
-                        Bachelor Thesis awarded with Honors. Topic: "Electrolytes in the presence of a potential barrier: Diffusio-Osmotic flow." Recognized as the best thesis of the graduating class.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Expertise</div>
-                <h2 class="section-title">Technical Skills</h2>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category fade-in-section">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Fortran 90</span>
-                    </div>
-                </div>
-                <div class="skill-category fade-in-section">
-                    <h3>Computational Methods</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Lattice-Boltzmann</span>
-                        <span class="skill-tag">DPD Simulations</span>
-                        <span class="skill-tag">Monte Carlo</span>
-                        <span class="skill-tag">Molecular Dynamics</span>
-                        <span class="skill-tag">Finite Elements</span>
-                    </div>
-                </div>
-                <div class="skill-category fade-in-section">
-                    <h3>Scientific Computing</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">SciPy</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">Matplotlib</span>
-                        <span class="skill-tag">HPC</span>
-                    </div>
-                </div>
-                <div class="skill-category fade-in-section">
-                    <h3>Machine Learning</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">Keras</span>
-                        <span class="skill-tag">Scikit-learn</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Get in Touch</div>
-                <h2 class="section-title">Contact</h2>
-                <p class="section-description">
-                    I'm always interested in discussing research collaborations, speaking opportunities, and new projects in computational physics and soft matter.
-                </p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item fade-in-section">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p><a href="mailto:sergigraley@gmail.com">sergigraley@gmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item fade-in-section">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>Evanston, Illinois, United States</p>
-                        </div>
-                    </div>
-                    <div class="contact-item fade-in-section">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        </div>
-                        <div class="contact-details">
-                            <h3>ORCID</h3>
-                            <p><a href="https://orcid.org/0000-0001-9176-9285" target="_blank">0000-0001-9176-9285</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item fade-in-section">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.14 20.16 22 16.42 22 12c0-5.52-4.48-10-10-10z"/></svg>
-                        </div>
-                        <div class="contact-details">
-                            <h3>GitHub</h3>
-                            <p><a href="https://github.com/slevinskygra" target="_blank">github.com/slevinskygra</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-cta fade-in-section">
-                    <a href="mailto:sergigraley@gmail.com" class="btn btn-primary" style="width: 100%; text-align: center; display: block;">Send an Email</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Sergi G. Leyva. Computational Physicist & Researcher.</p>
-    </footer>
-
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in-section').forEach((element) => {
-            observer.observe(element);
-        });
-    </script>
+  </main>
+  <footer class="site-footer">
+    <div class="wall" aria-hidden="true"></div>
+    <div class="wrap">
+      <address>
+        Sergi G. Leyva, Center for Computation and Theory of Soft Materials, Northwestern University, Evanston, Illinois<br>
+        <a href="mailto:sergigraley@gmail.com">sergigraley@gmail.com</a>
+      </address>
+      <ul>
+        <li><a href="https://scholar.google.com/citations?user=Cr-qqGAAAAAJ">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0000-0001-9176-9285">ORCID</a></li>
+        <li><a href="https://github.com/slevinskygra">GitHub</a></li>
+        <li><a href="assets/Sergi_Granados_CV.pdf">CV (PDF)</a></li>
+      </ul>
+      <p style="margin:0;width:100%">Last updated November 2026.</p>
+    </div>
+  </footer>
+  <script src="assets/js/channel.js" defer></script>
 </body>
 </html>
