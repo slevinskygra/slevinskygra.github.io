@@ -328,12 +328,15 @@
     tctx.stroke();
   }
 
+  // The label only changes when the flow clearly sets in or dies out
+  // (hysteresis), so it does not flicker near the critical flux.
   var lastLabel = "";
+  var flowing = 0; // -1 left, 0 none, +1 right
   function updateReadout() {
     if (!readout) return;
-    var label;
-    if (Math.abs(U) < 0.15) label = flux() < JC ? "none (below critical flux)" : "none yet";
-    else label = U > 0 ? "to the right" : "to the left";
+    if (flowing === 0 && Math.abs(U) > 0.3) flowing = U > 0 ? 1 : -1;
+    else if (flowing !== 0 && (Math.abs(U) < 0.12 || U * flowing < 0)) flowing = 0;
+    var label = flowing === 0 ? "none" : flowing > 0 ? "to the right" : "to the left";
     if (label !== lastLabel) {
       readout.textContent = label;
       lastLabel = label;
@@ -366,6 +369,7 @@
 
   function restart() {
     seed();
+    flowing = 0;
     if (!running) {
       // advance silently so the static frame shows the outcome
       for (var i = 0; i < 360; i++) step(1 / 60);

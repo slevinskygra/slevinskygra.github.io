@@ -298,7 +298,7 @@ sup, sub { line-height: 0; font-size: 0.72em; }
 }
 .channel-controls {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1fr) 19rem auto;
   gap: 0.8rem 1.6rem;
   align-items: center;
   margin-top: 0.9rem;
@@ -331,13 +331,13 @@ sup, sub { line-height: 0; font-size: 0.72em; }
 }
 .readout {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 150px minmax(0, 1fr);
   align-items: center;
   gap: 0.15rem 0.8rem;
   color: var(--muted);
 }
 .readout canvas { width: 150px; height: 42px; display: block; grid-row: span 2; }
-.readout strong { color: var(--ink); font-weight: 600; }
+.readout strong { color: var(--ink); font-weight: 600; white-space: nowrap; }
 
 input[type="range"] {
   width: 100%;
